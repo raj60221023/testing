@@ -1,0 +1,407 @@
+ 
+
+/* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; */
+
+
+/* Root Variables */
+:root {
+    --primary-color: #007acc;
+    --secondary-color: #005fa3;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+}
+
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Smooth Scroll for Sections */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section Styles */
+.section {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sticky Header */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.sticky nav a {
+    color: white;
+}
+
+/* Profile Image */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px 0;
+}
+
+/* Social Icons */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    position: relative;
+}
+
+.wrapper .icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.wrapper .icon:hover,
+.wrapper .icon.hover {
+    background: #0077b5;
+    box-shadow: 0 20px 15px rgba(255, 255, 255, 0.1);
+}
+
+.wrapper .icon img {
+    width: 25px;
+    height: 25px;
+    transition: 0.5s;
+}
+
+.wrapper .icon:hover img,
+.wrapper .icon.hover img {
+    filter: brightness(0) invert(1);
+}
+
+.wrapper .icon span {
+    position: absolute;
+    bottom: -35px;
+    background: #0077b5;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    font-size: 0.9rem;
+    visibility: hidden;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon.hover span {
+    opacity: 1;
+    bottom: -50px;
+    visibility: visible;
+}
+
+.wrapper .icon span::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #0077b5 transparent;
+}
+
+/* Project Cards */
+.project-card {
+    perspective: 1000px;
+    width: 300px;
+    height: 200px;
+    margin: 20px auto;
+    display: inline-block;
+}
+
+.project-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover .project-card-inner {
+    transform: rotateY(180deg);
+}
+
+.project-card-front,
+.project-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.project-card-front {
+    background-color: var(--primary-color);
+}
+
+.project-card-back {
+    background-color: var(--text-color);
+    transform: rotateY(180deg);
+}
+
+/* Button Styles */
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    animation: zigzag 3s infinite alternate;
+}
+
+.skill-logo {
+    width: 48px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+@keyframes zigzag {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-15px); }
+    50% { transform: translateY(15px); }
+    75% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Media Queries for Responsive Design */
+
+/* For screens smaller than 768px (tablets and mobiles) */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    header {
+        padding: 15px 0;
+    }
+
+    .section {
+        padding: 30px 10px;
+    }
+
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 90%;
+        height: auto;
+    }
+
+    .project-card-inner {
+        height: 100%;
+    }
+
+    .project-card-front,
+    .project-card-back {
+        height: auto;
+    }
+}
+
+/* For screens smaller than 480px (small phones) */
+@media (max-width: 480px) {
+    .skills-container {
+        padding: 10px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .project-card {
+        width: 100%;
+           height: auto;         /* auto */
+    }
+}
+
+/* Contact Form Styles */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Confirmation Message */
+#confirmation p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-top: 20px;
+}
+
+
+
+
+
+ 
